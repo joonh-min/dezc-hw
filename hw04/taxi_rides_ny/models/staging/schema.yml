@@ -9,6 +9,7 @@ sources:
     tables:
       - name: green_tripdata
       - name: yellow_tripdata
+      - name: fhv_tripdata
          # freshness:
            # error_after: {count: 6, period: hour}
 
@@ -195,3 +196,25 @@ models:
             description: Total amount of all tolls paid in trip.
           - name: Total_amount 
             description: The total amount charged to passengers. Does not include cash tips.
+
+
+    - name: stg_fhv_tripdata
+      description: > 
+        Description for FHV tripdata.
+      columns:
+          - name: dispatch_base_num
+            description: The TLC Base License Number of the base that dispatched the trip.
+          - name: affiliated_base_num 
+          - name: pickup_datetime 
+            description: The date and time when the meter was engaged.
+          - name: dropoff_datetime 
+            description: The date and time when the meter was disengaged.
+          - name: pickup_locationid
+            description: locationid where the meter was engaged.
+          - name: dropoff_locationid 
+            description: locationid where the meter was engaged.
+          - name: sr_flag
+            description: >
+              Indicates if the trip was a part of a shared ride chain offered by a
+              High Volume FHV company (e.g. Uber Pool, Lyft Line). For shared
+              trips, the value is 1. For non-shared rides, this field is null.

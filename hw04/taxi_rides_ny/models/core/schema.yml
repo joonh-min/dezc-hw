@@ -127,3 +127,28 @@ models:
       - name: payment_type_description
         data_type: string
         description: ""
+
+  - name: fact_fhv_trips
+    description: >
+      Create a core model similar to fact trips,
+      but selecting from stg_fhv_tripdata and joining with dim_zones.
+      Similar to what we've done in fact_trips,
+      keep only records with known pickup and dropoff locations entries
+      for pickup and dropoff locations. Run the dbt model without limits (is_test_run: false).
+    columns:
+      - name: dispatch_base_num
+        data_type: string
+      - name: affiliated_base_num
+        data_type: string
+      - name: pickup_locationid
+        data_type: int64
+      - name: dropoff_locationid
+        data_type: int64
+      - name: pickup_datetime
+        data_type: timestamp
+        description: ""
+      - name: dropoff_datetime
+        data_type: timestamp
+        description: ""
+      - name: sr_flag
+        data_type: int64
